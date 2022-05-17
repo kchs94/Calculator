@@ -1,24 +1,6 @@
 import java.util.Scanner;
 
 public class Calculator {
-  static int getFirstValue(Scanner scanner) {
-    System.out.print("첫 번째 값 입력: ");
-    int first = scanner.nextInt();
-    return first;
-  }
-
-  static String getSymbol(Scanner scanner) {
-    System.out.print("사칙연산 +,-,*,/ 중 하나를 입력하세요: ");
-    String op = scanner.next();
-    return op;
-  }
-
-  static int getSecondValue(Scanner scanner) {
-    System.out.print("두 번째 값 입력: ");
-    int second = scanner.nextInt();
-    return second;
-  }
-
   static int calculate(int first, String operator, int second) {
     int result = 0;
     if (operator.equals("+")){
@@ -38,24 +20,20 @@ public class Calculator {
     return result;
   }
 
-  static void print(int result) {
-    System.out.println("최종 결과 값: " + result);
-  }
-
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
 
-    int first = getFirstValue(scanner);
+    int first = Input.getFirstValue(scanner);
 
     int result = first;
     while (true) {
-      String operator = getSymbol(scanner);
+      String operator = Input.getSymbol(scanner);
 
       if (operator.equals("quit")) {
-        print(result) ;
+        Output.print(result); ;
         break;
       }
-      int second = getSecondValue(scanner);
+      int second = Input.getSecondValue(scanner);
 
       result = calculate(result, operator, second);
     }
